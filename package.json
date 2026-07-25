@@ -1,0 +1,71 @@
+{
+  "name": "pi-pawpad",
+  "version": "0.1.0",
+  "description": "Persistent per-session tasks and notes for Pi",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "author": "Wu Haotian",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whtsky/pi-pawpad.git"
+  },
+  "bugs": {
+    "url": "https://github.com/whtsky/pi-pawpad/issues"
+  },
+  "homepage": "https://github.com/whtsky/pi-pawpad#readme",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "tasks",
+    "scratchpad",
+    "context-compaction"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "pi": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "npm run build && node --test --test-reporter=spec test/*.test.mjs",
+    "clean": "rm -rf dist",
+    "prepack": "npm run clean && npm run build",
+    "prepublishOnly": "npm run test && npm run typecheck"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "0.82.0",
+    "@earendil-works/pi-coding-agent": "0.82.0",
+    "@earendil-works/pi-tui": "0.82.0",
+    "typebox": "1.1.38",
+    "typescript": "7.0.2"
+  }
+}
